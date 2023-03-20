@@ -1,6 +1,6 @@
-name = main_transform
+name=main_transform
 
-all:
+transform:
 	if [ -d "./build" ]; then rm -r build; fi
 	mkdir build
 	
@@ -10,3 +10,14 @@ all:
 
 	echo "\nCompiled\n -- Starting program --"
 	./build/*.out
+
+for_each:
+	if [ -d "./build" ]; then rm -r build; fi
+	mkdir build
+	
+	# from cuda documentation
+	nvcc -c -I/usr/local/cuda/include  -I../spinta main_for_each.cu -o ./build/nvcc_for_each.o
+	g++ -o ./build/for_each.out ./build/nvcc_for_each.o -L/usr/local/cuda/lib64 -lcusparse -lcudart
+
+	echo "\nCompiled\n -- Starting program --"
+	./build/for_each.out
