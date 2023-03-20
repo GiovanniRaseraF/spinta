@@ -21,3 +21,15 @@ for_each:
 
 	echo "\nCompiled\n -- Starting program --"
 	./build/for_each.out
+
+count:
+	if [ -d "./build" ]; then rm -r build; fi
+	mkdir build
+	
+	# from cuda documentation
+	nvcc -c -I/usr/local/cuda/include  -I../spinta main_count.cu -o ./build/nvcc_count.o
+	g++ -o ./build/count.out ./build/nvcc_count.o -L/usr/local/cuda/lib64 -lcusparse -lcudart
+
+	echo "\nCompiled\n -- Starting program --"
+	./build/count.out
+
