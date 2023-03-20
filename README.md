@@ -10,3 +10,7 @@ spinta is a c++ "header only" library that tries to be like thrust 1.0.0, this s
 - email: giovanni.raserafarra@gmail.com
 - workemail: g.rasera@huracanmarine.com
 - uniemail: 143395@spes.uniud.it
+
+# Add your name here and create a pull request
+- Pantofola Cetriolino
+- 
