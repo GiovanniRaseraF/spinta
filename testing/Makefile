@@ -33,3 +33,14 @@ count:
 	echo "\nCompiled\n -- Starting program --"
 	./build/count.out
 
+vector:
+	if [ -d "./build" ]; then rm -r build; fi
+	mkdir build
+	
+	# from cuda documentation
+	nvcc -c -I/usr/local/cuda/include  -I../spinta main_vector.cu -o ./build/nvcc_vector.o
+	g++ -o ./build/vector.out ./build/nvcc_vector.o -L/usr/local/cuda/lib64 -lcusparse -lcudart
+
+	echo "\nCompiled\n -- Starting program --"
+	./build/vector.out
+
